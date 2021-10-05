@@ -23,7 +23,7 @@ test
 
 # Plot for anatomy-drawing
 test + facet_grid(rows = vars(gender))
-ggsave("output/facet_tate_basic.pdf")
+#ggsave("output/facet_tate_basic.pdf")
 
 # Removing unknown gender
 basic <- ggplot(art_artist %>% drop_na(gender), aes(x = year, fill = gender)) +
@@ -52,7 +52,7 @@ basic +
        caption = "Source: Tate Art Museum / TidyTuesday | Visualization: Emma Skarstein") +
   my_basic_theme(base_family = "Nunito")
 
-ggsave("output/tate_final.pdf")
+ggsave("output/2021week03tate_final.pdf")
 
 basic + my_basic_theme()
 
@@ -63,17 +63,4 @@ basic + my_basic_theme()
 # - Make flatter and longer
 # - Highlight first female painter
 # - Fix colors
-# -
 
-ggplot(art_artist, aes(x = year, fill = gender)) +
-  geom_bar() +
-  scale_fill_manual(values = c("#EC7238", "#66B4C0", "#1E4A76")) +
-  scale_x_continuous(breaks = seq(1700, 2012, by = 50),
-                     expand = c(0.05, 0.05)) +
-  scale_y_continuous(limits = c(0, 3300),
-                     expand = c(0.001, 0)) +
-  labs(title = "TATE ART MUSEUM: Pieces created each year",
-       subtitle = "1700 - 2012",
-       caption = "Source: Tate Art Museum / TidyTuesday | Visualization: Emma Skarstein") +
-  my_basic_theme(base_family = "Nunito") +
-  theme(plot.title = element_text(size = 18))
