@@ -49,7 +49,7 @@ basic +
                      expand = c(0.05, 0.05)) +
   scale_y_continuous(limits = c(0, 3300),
                      expand = c(0.001, 0)) +
-  labs(title = "TATE ART MUSEUM\nPieces created each year",
+  labs(title = "TATE ART MUSEUM: Pieces created each year",
        subtitle = "1700 - 2012",
        caption = "Source: Tate Art Museum / TidyTuesday | Visualization: Emma Skarstein") +
   my_basic_theme(base_family = "Nunito")
