@@ -5,7 +5,6 @@
 library(tidyverse)
 library(tidytuesdayR)
 library(showtext)
-library(wesanderson)
 library(myGraphicsToolkit)
 
 tuesdata <- tidytuesdayR::tt_load(2021, week = 3)
