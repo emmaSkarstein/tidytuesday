@@ -69,8 +69,8 @@ ggplot(lemur_net, aes(x = x, y = y, xend = xend, yend = yend)) +
 # Find the individual with the most children and highlight?
 #
 
-ggsave("2021week35_lemurs.pdf")
-ggsave("2021week35.png")
+ggsave("output/2021week35_lemurs.pdf")
+ggsave("output/2021week35.png")
 
 
 
