@@ -54,7 +54,7 @@ basic +
   my_basic_theme(base_family = "Nunito")
 
 ggsave("output/2021week03tate_final.pdf")
-ggsave("output/2021week03tate_final.png")
+ggsave("output/2021week03.png")
 
 # Todo:
 # - Move legend to the top, fix legend title and labels
