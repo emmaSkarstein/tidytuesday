@@ -81,6 +81,28 @@ ggplot(lemur_net, aes(x = x, y = y, xend = xend, yend = yend)) +
         legend.title = element_blank(),
         legend.position = "top")
 
+# Plot the graph
+ggplot(lemur_net, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = "gray6",
+             arrow = arrow(length = unit(4, "pt")),  # arrows to show direction
+             curvature = 0.1) +  # slight curvature (purely aesthetic)
+  geom_nodes(color = "#4548D1", size = 1, alpha = 0.8) +
+  labs(title = "FAMILY NETWORK OF LEMURS",
+       subtitle = "at the Duke Lemur Center",
+       caption = "Source: Duke Lemur Center  |  Visualization: Emma Skarstein") +
+  coord_fixed() +
+  guides(colour = guide_legend(override.aes = list(size=3))) +
+  theme_blank() +
+  theme(text = element_text(family = lemur_font),
+        plot.title = element_text(size = 35,
+                                  margin = margin(b = 5),
+                                  hjust = 0.5),
+        plot.subtitle = element_text(size = 24,
+                                     margin = margin(b = 10),
+                                     hjust = 0.5),
+        plot.background = element_rect(fill = "gray98", color = "gray98"),
+        panel.background = element_rect(fill = "gray98"))
+
 
 ggsave("output/2021week35_lemurs.pdf", width = 9, height = 11)
 ggsave("output/2021week35.png", width = 9, height = 11)
