@@ -12,3 +12,7 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 **WEEK 35, 2021** | LEMURS
 
 ![2021week35](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week35.png)
+
+**WEEK 36, 2021** | BIRD BATHS
+
+![2021week36](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week36.png)
