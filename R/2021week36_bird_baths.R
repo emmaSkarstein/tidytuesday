@@ -45,6 +45,7 @@ showtext_auto()
 # Setting colors
 col_bg <- "gray96"
 col_pointline <- "darkorange3"
+col_catbird <- "gray30"
 
 
 ggplot(data = plot_data) +
@@ -58,11 +59,11 @@ ggplot(data = plot_data) +
   annotate("text", x = 1.5,
            y = seq(20, 240, by = 20),
            label = seq(20, 240, by = 20),
-           size = 8, alpha = 0.2, family = f1, fontface = "bold", color = "darkgreen") +
+           size = 8, alpha = 0.2, family = f1, fontface = "bold", color = "#41115B") +
   # Urban/rural annotation
   annotate("text", x = c(0.99, 2.01), y = 250, label = c("Rural", "Urban"),
            hjust = c(1, 0), family = f2, fontface = "bold", size = 10,
-           alpha = 0.9, color = "darkgreen") +
+           alpha = 0.9, color = "#41115B") +
   # Lines
   geom_segment(aes(y = Rural, yend = Urban, x = 1, xend = 2),
                col = col_pointline, alpha = 0.5) +
@@ -71,12 +72,13 @@ ggplot(data = plot_data) +
   geom_point(aes(y = Urban, x = 2), size = 2, col = col_pointline, alpha = 0.5) +
   # Bird names annotation
   geom_text_repel(aes(label=bird_type, x = 2, y = Urban), family = f1,
-                  size = 2, nudge_x = 0.05, hjust = "left") +
+                  size = 2, nudge_x = 0.05, hjust = "left",
+                  segment.color = col_catbird, segment.size = 0.1) +
 
   # Bird and cat
-  geom_image(aes(x = 0.995, y = max(Rural)+5), image = "R/bird.svg") +
-  geom_image(aes(x = 2.005, y = 200), image = "R/bird-flip.svg") +
-  geom_image(aes(x = 0.8, y = 37), image = "R/cat.svg", size = 0.15) +
+  geom_image(aes(x = 0.995, y = max(Rural)+5), image = "R/bird.svg", color = col_catbird) +
+  geom_image(aes(x = 2.005, y = 200), image = "R/bird-flip.svg", color = col_catbird) +
+  geom_image(aes(x = 0.8, y = 37), image = "R/cat.svg", size = 0.15, color = col_catbird) +
   # Scales
   scale_x_continuous(limits = c(0.7, 2.3)) +
   # Titles
@@ -90,7 +92,7 @@ ggplot(data = plot_data) +
                                   margin = margin(b = 5)),
         plot.subtitle = element_text(size = 15,
                                      margin = margin(b = 10)),
-        plot.caption = element_text(size = 7),
+        plot.caption = element_text(size = 10),
         plot.background = element_rect(fill = col_bg, color = col_bg),
         panel.background = element_rect(fill = col_bg, color = col_bg),
         plot.margin = margin(20, 20, 20, 20))
