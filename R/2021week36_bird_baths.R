@@ -47,6 +47,7 @@ col_bg <- "gray96"
 col_pointline <- "darkorange3"
 col_catbird <- "gray30"
 
+# Inspired by lemur plot by G. Karamanis: https://github.com/gkaramanis/tidytuesday/tree/master/2021/2021-week34
 
 ggplot(data = plot_data) +
   # Years axis
@@ -59,7 +60,7 @@ ggplot(data = plot_data) +
   annotate("text", x = 1.5,
            y = seq(20, 240, by = 20),
            label = seq(20, 240, by = 20),
-           size = 8, alpha = 0.2, family = f1, fontface = "bold", color = "#41115B") +
+           size = 8, alpha = 0.2, family = f1, color = "#41115B") +
   # Urban/rural annotation
   annotate("text", x = c(0.99, 2.01), y = 250, label = c("Rural", "Urban"),
            hjust = c(1, 0), family = f2, fontface = "bold", size = 10,
@@ -76,9 +77,9 @@ ggplot(data = plot_data) +
                   segment.color = col_catbird, segment.size = 0.1) +
 
   # Bird and cat
-  geom_image(aes(x = 0.995, y = max(Rural)+5), image = "R/bird.svg", color = col_catbird) +
-  geom_image(aes(x = 2.005, y = 200), image = "R/bird-flip.svg", color = col_catbird) +
-  geom_image(aes(x = 0.8, y = 37), image = "R/cat.svg", size = 0.15, color = col_catbird) +
+  geom_image(aes(x = 0.995, y = max(Rural)+5), image = "R/icons/bird.svg", color = col_catbird) +
+  geom_image(aes(x = 2.005, y = 200), image = "R/icons/bird-flip.svg", color = col_catbird) +
+  geom_image(aes(x = 0.8, y = 37), image = "R/icons/cat.svg", size = 0.15, color = col_catbird) +
   # Scales
   scale_x_continuous(limits = c(0.7, 2.3)) +
   # Titles
@@ -92,7 +93,7 @@ ggplot(data = plot_data) +
                                   margin = margin(b = 5)),
         plot.subtitle = element_text(size = 15,
                                      margin = margin(b = 10)),
-        plot.caption = element_text(size = 10),
+        plot.caption = element_text(size = 8),
         plot.background = element_rect(fill = col_bg, color = col_bg),
         panel.background = element_rect(fill = col_bg, color = col_bg),
         plot.margin = margin(20, 20, 20, 20))
