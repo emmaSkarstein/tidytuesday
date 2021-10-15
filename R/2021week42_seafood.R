@@ -139,47 +139,8 @@ names(consumption) <- c("country", "code", "year", "consumption")
 library(RColorBrewer)
 
 # Setting colors
-col_bg <- "grey90"
+col_bg <- "grey94"
 col_text <- "#2b4560"
-
-# Annotations - Black
-geom_segment(data = student_debt_annotation,
-             aes(x = year, xend = 2010,
-                 y = loan_debt_pct,
-                 yend = loan_debt_pct + 10),
-             lineend = "round",
-             size = .75,
-             color = "black") +
-  geom_segment(data = student_debt_annotation,
-               aes(x = 2002, xend = 2010,
-                   y = loan_debt_pct + 10,
-                   yend = loan_debt_pct + 10),
-               lineend = "round",
-               size = .75,
-               color = "black") +
-  geom_point(data = student_debt_annotation,
-             aes(x = year,
-                 y = loan_debt_pct),
-             size = 2.5,
-             shape = 16,
-             color = "black") +
-  geom_text(data = student_debt_annotation,
-            aes(x = 2002,
-                y = loan_debt_pct + 14,
-                label = label),
-            family = "Open Sans",
-            fontface = "bold",
-            size = 3.5,
-            lineheight = 0.75,
-            hjust = 0)
-
-consumption_annotation <- tibble(
-  race = c("Black", "White"),
-  year = c(2013, 2013),
-  loan_debt_pct = c(41.2, 28.5),
-  label = c("By 2013, over 40% of\nU.S. Black families\nhad student loan debt",
-            "In comparison, by 2013\n28.5% of U.S.white families\nhad student loan debt")
-)
 
 ggplot(consumption, aes(x = year, y = consumption, group = country)) +
   geom_line(aes(color = country)) +
@@ -188,7 +149,6 @@ ggplot(consumption, aes(x = year, y = consumption, group = country)) +
   ylab("Seafood consumption (kg/capita/year)") +
   scale_color_brewer(palette = "Dark2", direction = -1) +
   scale_x_continuous(limits = c(1960, 2018), expand = c(0.005, 0.005)) +
-  geom_segment(aes(x = 2000, y = 100))
   # Titles
   labs(title = "Global seafood consumption",
        subtitle = "1960 - 2018, selected countries highlighted",
