@@ -4,6 +4,11 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 (displayed in reverse-chronological order).
 
 ---
+**Week 43, 2021** | BIG PUMPKINS
+
+![2021week43](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week43_pumpkins.png)
+
+
 **Week 42, 2021** | SEAFOOD PRODUCTION AND CONSUMPTION
 
 ![2021week42_1](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week42_seafood_consumption.png)
