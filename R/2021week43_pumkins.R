@@ -26,7 +26,7 @@ pumpkins <- pumpkins %>% filter(type %in% c("Giant Pumpkin", "Giant Squash"))
 
 
 # Font
-f1 <- "IM Fell English SC"
+f1 <- "IM Fell DW Pica SC"
 f2 <- "Vollkorn"
 f2 <- "IM Fell DW Pica"
 font_add_google(name = f1, family = f1)
@@ -84,6 +84,7 @@ ggplot(pumpkins, aes(x = type, y = weight_lbs)) +
         plot.margin = margin(20, 25, 20, 0))
 
 ggsave("output/2021week43_pumpkins.pdf", width = 9, height = 11)
+ggsave("output/2021week43_pumpkins.png", width = 9, height = 11)
 
 # Todo
 # - facet background
