@@ -73,8 +73,10 @@ server <- function(input, output) {
     })
 
     # Map
-    #london <- readShapePoly("../spatialggplot/london_sport.shp")  # read in the shapefile
-    #proj4string(london) <- CRS("+init=epsg:27700")
+    #london <- readRDS("../2021week27_londonmap.rds")
+    london <- readRDS("https://raw.githubusercontent.com/emmaSkarstein/tidytuesday/master/R/2021week27_londonmap.rds")
+
+    #london <- readRDS("R/2021week27_londonmap.rds")
 
     # Font
     f1 <- "Oswald"
@@ -93,7 +95,7 @@ server <- function(input, output) {
     output$distPlot <- renderPlot({
         plot_map <- ggplot(data = selected_animal_year()) +
         # Background map
-        #geom_polygon(data = london, aes(long, lat, group = group), fill = "grey30", color = "grey40") +
+        geom_polygon(data = london, aes(long, lat, group = group), fill = "grey30", color = "grey40") +
         # Points for animal rescues
         geom_point(aes(x = easting_rounded, y = northing_rounded, fill = special_service_type_category),
                    pch = 21, color = "black", size = 5) +

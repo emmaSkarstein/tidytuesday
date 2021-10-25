@@ -5,7 +5,9 @@ account: emmaskarstein
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4950745
-bundleId: 5174511
+bundleId: 5174609
 url: https://emmaskarstein.shinyapps.io/2021week27_animal_rescues/
-when: 1635167632.14227
-lastSyncTime: 1635167632.14228
+when: 1635168694.88754
+lastSyncTime: 1635168694.88755
+asMultiple: FALSE
+asStatic: FALSE
