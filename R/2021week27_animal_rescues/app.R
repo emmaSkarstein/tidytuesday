@@ -31,16 +31,18 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
             sliderInput("year",
-                        "Year:",
+                        "YEAR",
                         min = 2009,
                         max = 2020,
                         value = 2020,
                         step = 1,
                         animate = TRUE,
                         sep = ""),
-            selectInput("animal", "Select animal:",
+            selectInput("animal", "ANIMAL",
                         choices = list("Cat" = "Cat", "Dog" = "Dog", "Bird" = "Bird"),
-                        selected = "Cat")
+                        selected = "Cat"),
+            helpText("Explore London animal rescues! Notice how the number of cat and bird rescues reached an all-time high in 2020, while the dog rescues have been steadily decreasing."),
+            width = 4
         ),
 
         # Show a plot of the generated distribution
@@ -73,10 +75,7 @@ server <- function(input, output) {
     })
 
     # Map
-    #london <- readRDS("../2021week27_londonmap.rds")
-    london <- readRDS("https://raw.githubusercontent.com/emmaSkarstein/tidytuesday/master/R/2021week27_londonmap.rds")
-
-    #london <- readRDS("R/2021week27_londonmap.rds")
+    london <- readRDS(gzcon(url("https://raw.githubusercontent.com/emmaSkarstein/tidytuesday/master/R/2021week27_londonmap.rds")))
 
     # Font
     f1 <- "Oswald"
@@ -112,9 +111,10 @@ server <- function(input, output) {
                                             size = 40,
                                             face = "bold",
                                             margin = margin(b = 20)),
-              plot.subtitle = element_markdown(size = 23,
+              plot.subtitle = element_markdown(size = 30,
                                                face = "bold",
-                                               margin = margin(b = 10)),
+                                               margin = margin(b = 10),
+                                               halign = 0.5),
               plot.caption = element_text(size = 12,
                                           margin = margin(t = 10)),
               axis.text = element_blank(),
@@ -126,10 +126,11 @@ server <- function(input, output) {
               panel.border = element_rect(color = col_lines, fill = NA, size = 1))
 
         plot_time <- ggplot(across_time(), aes(x = cal_year, fill = special_service_type_category)) +
-            geom_bar(width = 0.5) +
+            geom_bar(width = 0.5, color = "black") +
             gghighlight(cal_year == input$year) +
             scale_fill_manual(values = col_points) +
             scale_x_continuous(breaks = 2009:2020) +
+            scale_y_continuous(limits = c(0, 340)) +
             labs(caption = "Source: London.gov  |  Visualization: Emma Skarstein") +
             my_basic_theme(base_family = f2) +
             theme(plot.caption = element_text(size = 12, margin = margin(t = 20)),
