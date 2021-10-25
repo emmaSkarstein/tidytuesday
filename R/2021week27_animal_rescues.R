@@ -58,7 +58,7 @@ y0 <- 157000
 scalen <- 130
 width <- 2
 
-catplot <- ggplot(cats) +
+ggplot(cats) +
   # Background map
   geom_polygon(data = london, aes(long, lat, group = group), fill = "grey30", color = "grey40") +
   # Points for animal rescues
@@ -85,10 +85,10 @@ catplot <- ggplot(cats) +
             family = f2, face = "bold") +
   labs(title = "2020 MARKS ALL-TIME HIGH FOR CAT RESCUES IN LONDON",
        subtitle = "The maps show yearly cat rescues
-       <span style='color:#899DA4;'>below ground</span>,
-       <span style='color:#C93312;'>from a hight</span>,
-       <span style='color:#FAEFD1;'>from water</span> or
-       <span style='color:#DC863B;'>other</span>.",
+       <b style='color:#899DA4;'>below ground</b>,
+       <b style='color:#C93312;'>from a hight</b>,
+       <b style='color:#FAEFD1;'>from water</b> or
+       <b style='color:#DC863B;'>other</b>.",
        caption = "Source: London.gov  |  Visualization: Emma Skarstein") +
   facet_wrap(vars(cal_year)) +
   coord_equal() +
@@ -118,53 +118,6 @@ catplot <- ggplot(cats) +
 
 ggsave("output/2021week27_animal_rescue.pdf", width = 11, height = 8)
 ggsave("output/2021week27_animal_rescue.png", width = 11, height = 8)
-
-
-# Compare with dog rescues
-cat_dog <- animal_rescues %>% filter(animal_group_parent %in% c("Cat", "Dog"), cal_year < 2021)
-cat_dog$special_service_type_category <- fct_recode(cat_dog$special_service_type_category,
-                                                 Height = "Animal rescue from height",
-                                                 "Below_ground" = "Animal rescue from below ground",
-                                                 Water = "Animal rescue from water",
-                                                 Other = "Other animal assistance")
-
-cat_dog_plot <- ggplot(cat_dog, aes(y = animal_group_parent, fill = special_service_type_category)) +
-  geom_bar() +
-  scale_fill_manual(values = col_points) +
-  facet_wrap(vars(cal_year)) +
-  my_basic_theme(base_family = f2) +
-  theme(text = element_text(family = f2, size = 18, color = col_text),
-        plot.title = element_markdown(family = f1,
-                                      size = 26,
-                                      face = "bold",
-                                      margin = margin(b = 5)),
-        plot.subtitle = element_markdown(size = 15,
-                                         margin = margin(b = 10)),
-        plot.caption = element_text(size = 12,
-                                    margin = margin(t = 10)),
-        strip.text = element_text(size = 15,
-                                  face = "bold",
-                                  color = col_bg),
-        axis.text.x = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks = element_blank(),
-        plot.background = element_rect(fill = col_bg, color = col_bg),
-        panel.background = element_rect(fill = col_panel, color = col_panel),
-        legend.position = "none",
-        panel.spacing = unit(.05, "lines"),
-        panel.border = element_rect(color = col_lines, fill = NA, size = 1),
-        strip.background = element_rect(color = col_lines, fill = "grey40", size = 1),
-        plot.margin = margin(20, 20, 5, 20))
-
-
-catplot/cat_dog_plot
-
-
-ggsave("output/2021week27_animal_rescue.pdf")
-ggsave("output/2021week27_animal_rescue.png")
-
-# Idea: make a shiny app where you can see a map and some summary statistics for a user specified year and animal (let totals be an option as well)
-library(shiny)
 
 
 
