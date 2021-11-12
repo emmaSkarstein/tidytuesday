@@ -1,9 +1,22 @@
 # Tidy Tuesday project
 
 These are my contributions to the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday)! Working on slowly improving my data visualization skills
-(displayed in reverse-chronological order).
+(displayed in order of creation, newest first).
 
 ---
+
+**Week 46, 2021** | AFRILEARNDATA
+
+![2021week46](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week46_afrilearndata_dark.png)
+
+
+**Week 27, 2021** | ANIMAL RESCUES
+
+![2021week27](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week27_animal_rescue.png)
+
+Also made a Shiny app: https://emmaskarstein.shinyapps.io/2021week27_animal_rescues/ 
+
+
 **Week 43, 2021** | BIG PUMPKINS
 
 ![2021week43](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week43_pumpkins.png)
@@ -24,11 +37,6 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 
 ![2021week35](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week35.png)
 
-
-**WEEK 27, 2021** | ANIMAL RESCUES
-
-![2021week27](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week27_animal_rescue.png)
-and an interactive Shiny app: https://emmaskarstein.shinyapps.io/2021week27_animal_rescues/ 
 
 **WEEK 3, 2021** | TATE ART COLLECTION
 
