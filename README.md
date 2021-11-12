@@ -5,6 +5,11 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 
 ---
 
+**Week 46, 2021** | AFRILEARNDATA
+
+![2021week46](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week46_afrilearndata_dark.png)
+
+
 **Week 27, 2021** | ANIMAL RESCUES
 
 ![2021week27](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week27_animal_rescue.png)
