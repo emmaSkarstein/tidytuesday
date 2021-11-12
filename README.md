@@ -33,11 +33,6 @@ Also made a Shiny app: https://emmaskarstein.shinyapps.io/2021week27_animal_resc
 ![2021week35](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week35.png)
 
 
-**WEEK 27, 2021** | ANIMAL RESCUES
-
-![2021week27](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week27_animal_rescue.png)
-and an interactive Shiny app: https://emmaskarstein.shinyapps.io/2021week27_animal_rescues/ 
-
 **WEEK 3, 2021** | TATE ART COLLECTION
 
 ![2021week3](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week03.png)
