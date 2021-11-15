@@ -5,6 +5,11 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 
 ---
 
+**Week 13, 2019** | SEATTLE PET NAMES
+
+![2021week46](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2019week13_seattle_pet_names.png)
+
+
 **Week 46, 2021** | AFRILEARNDATA
 
 ![2021week46](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week46_afrilearndata_dark.png)
