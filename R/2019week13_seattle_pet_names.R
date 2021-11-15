@@ -2,7 +2,9 @@
 # By Emma Skarstein, November 2021
 
 library(tidyverse)
-
+library(packcircles)
+library(viridis)
+library(showtext)
 
 seattle_pets <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-26/seattle_pets.csv")
 
@@ -12,34 +14,12 @@ seattle_pets <- seattle_pets %>%
 cats <- seattle_pets %>% filter(species == "Cat") %>%
   mutate(name_length = as.factor(str_length(animals_name)))
 
-somalis <- seattle_pets %>% filter(species=="Cat") %>% filter(primary_breed %in% c("Somali", "Abyssinian"))
-
-
-# Idea: Length of names for domestic cats versus pure breed cats
-# Idea: Timeseries of most common cat name
-
 name_counts <- cats %>%
   drop_na(animals_name) %>%
   count(animals_name, sort = TRUE) %>%
   mutate(animals_name = fct_reorder(animals_name, desc(-n)))
 
-
-luna <- cats %>% filter(animals_name == "Luna")
-
-
-ggplot(cats) +
-  geom_bar(aes(x = year))
-
 unique(cats$primary_breed)
-
-
-
-ggplot(cats) +
-  geom_dotplot(aes(x = name_length), binwidth = 1)
-
-cats_name_length_count <- cats %>% count(name_length)
-
-
 
 # For each name_length, assign each cat a value 1:number of cats with that name length.
 fancycats <- cats %>%
@@ -51,10 +31,8 @@ name_length_cats <- fancycats %>%
   mutate(index = row_number()) %>%
   right_join(fancycats)
 
-
 ggplot(name_length_cats) +
   geom_point(aes(x = name_length, y = index, color = primary_breed), size = 2, alpha = 0.5)
-
 
 ggplot(name_length_cats) +
   geom_bar(aes(x = name_length, fill = primary_breed))
@@ -69,13 +47,7 @@ ggplot(name_counts[1:10,]) +
   geom_col(aes(x = n, y = animals_name)) +
   theme(axis.title = element_blank())
 
-ggplot(name_counts[1:10,]) +
-  geom_jitter(aes(x = 1, y = 1, size = n)) +
-  scale_size_continuous(range = c(10, 50))
-  theme(axis.title = element_blank())
-
-
-library(packcircles)
+# Done exploring, this is where it starts. Plotting circles proportional to name popularity.
 
 n = 100
 # Generate the layout. This function return a dataframe with one line per bubble.
@@ -92,9 +64,6 @@ plot(data$radius, data$n)
 # The next step is to go from one center + a radius to the coordinates of a circle that
 # is drawn by a multitude of straight lines.
 dat.gg <- circleLayoutVertices(packing, npoints=50)
-
-library(viridis)
-library(showtext)
 
 # Font
 f1 <- "Josefin Sans"
@@ -118,7 +87,7 @@ ggplot() +
        subtitle = "Top 100 names for cats registered in Seattle from 2015 to 2018.",
        caption = "Source: seattle.gov  |  Visualization: Emma Skarstein") +
   # Luna annotation
-  annotate(geom = "text", x = 35, y = 40, label = "Luna is the most popular, \nwith 111 cats carrying the name.",
+  annotate(geom = "text", x = 39, y = 40, label = "Luna is the most popular, \nwith 111 cats carrying the name.",
            family = f2, hjust = 1) +
   # Bear annotation
   annotate(geom = "curve", x = -7, y = -36, xend = -6, yend = -34,
@@ -133,7 +102,7 @@ ggplot() +
            curvature = -.25, arrow = arrow(length = unit(2, "mm"))) +
   annotate(geom = "text", x = -32, y = -27.5, label = "...and 21 Oreos.", family = f2) +
   # Also annotation
-  geom_text(aes(x = 35, y = -35, label = "Also... \n13 cats are named Cat. \n16 cats are named Mouse. \n16 cats are named Monkey. ",
+  geom_text(aes(x = 39, y = -33, label = "Also... \n13 cats are named Cat. \n16 cats are named Mouse. \n16 cats are named Monkey. ",
                 hjust = 1, lineheight = 1, family = f2), size = 4) +
   # General theme:
   theme_void() +
