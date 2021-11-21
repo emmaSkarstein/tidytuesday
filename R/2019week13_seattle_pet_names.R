@@ -88,7 +88,7 @@ ggplot() +
        caption = "Source: seattle.gov  |  Visualization: Emma Skarstein") +
   # Luna annotation
   annotate(geom = "text", x = 39, y = 40, label = "Luna is the most popular, \nwith 111 cats carrying the name.",
-           family = f2, hjust = 1) +
+           family = f2, hjust = 1, size = 4.5) +
   # Bear annotation
   annotate(geom = "curve", x = -7, y = -36, xend = -6, yend = -34,
            curvature = .25, arrow = arrow(length = unit(2, "mm"))) +
@@ -127,5 +127,8 @@ ggsave("output/2019week13_seattle_pet_names.png", width = 9, height = 11)
 
 
 
+# Looking at the most unique names
+unique_names <- name_counts %>% filter(n == 1)
+names2 <- name_counts %>% filter(n == 2)
 
 
