@@ -95,7 +95,7 @@ ggplot() +
   xlab("Date first aired") +
   ylab("Rating") +
   labs(title = "Doctor Who ratings are decreasing",
-       subtitle = "The Doctor Who revival seasons (2005 - today) have been well received, but the last few seasons are seeing less of the \nsucces that met the first seasons.",
+       subtitle = "The Doctor Who revival seasons (2005 - today) have been well received, but the last few seasons are seeing less of the \nsucces that met the first seasons. Point size indicates UK viewing numbers.",
        caption = "Source: datardis package by Jonathan Kitt  |  Visualization: Emma Skarstein") +
   theme(text = element_text(family = f2, size = 12),
         plot.title = element_text(family = f1,
