@@ -84,7 +84,7 @@ ggplot(ikea_beds) +
         legend.position = "none",
         plot.background = element_rect(fill = ikea_yellow, color = ikea_yellow),
         panel.background = element_rect(fill = ikea_yellow),
-        plot.margin = margin(20, 5, 5, 5))
+        plot.margin = margin(30, 5, 5, 5))
 
 ggsave("output/2021week51_ikea.pdf", width = 7, height = 11)
 ggsave("output/2021week51_ikea.png", width = 7, height = 11)
