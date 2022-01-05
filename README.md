@@ -5,6 +5,11 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 
 ---
 
+**Week 51, 2021** | IKEA BEDS
+
+![2021week51](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week51_ikea.png)
+
+
 **Week 48, 2021** | DOCTOR WHO
 
 ![2021week48](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2021week48_dr_who.png)
