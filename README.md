@@ -4,6 +4,9 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 (displayed in order of creation, newest first).
 
 ---
+**Week 4, 2022** | BOARDGAMES
+![2022week04](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2022week04_boardgames.png)
+
 
 **Week 51, 2021** | IKEA BEDS
 
