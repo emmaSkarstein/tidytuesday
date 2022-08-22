@@ -1,7 +1,6 @@
 # Tidy Tuesday project
 
-These are my contributions to the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday)! Working on slowly improving my data visualization skills
-(displayed in order of creation, newest first).
+These are my contributions to the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday). Graphs are made using [`ggplot2`](https://ggplot2.tidyverse.org/), tables are made with [`gt`](https://gt.rstudio.com/). The contributions are displayed in order of creation, with the newest first.
 
 ---
 **Week 4, 2022** | BOARDGAMES
