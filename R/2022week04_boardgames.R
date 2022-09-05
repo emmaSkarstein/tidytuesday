@@ -14,11 +14,14 @@ unique(ratings$name)
 summary(ratings$year)
 unique(ratings$year)
 
+# Ideas:
 # Cooperative games, high ratings, old games, etc.
 # Expansions vs popularity
+# Look at the games we own
 
 old_games <- ratings %>% filter(year < 1960 & year> 1900 ) %>% left_join(details, by = "id")
 
+# The games we own -------
 our_games_names <- c("Carcassonne", "Pandemic", "Ticket to Ride: Europe", "Ghost Stories",
                "Blueprints", "Lost Cities", "Railroad Ink: Deep Blue Edition", "My City",
                "Welcome To...", "Dominion", "One Deck Dungeon", "KeyForge: Age of Ascension",
@@ -27,7 +30,7 @@ our_games <- ratings %>% filter(name %in% our_games_names)
 # Merge with details set
 
 
-# Cooperative games
+# Cooperative games -------
 coop_det <- details %>% filter(str_detect(boardgamemechanic, "Cooperative"))
 
 cooperative_games <- left_join(coop_det, ratings, by = "id")
@@ -55,7 +58,7 @@ table_data <- top_coop %>%
 
 
 
-table_data %>%
+coopgames_table <- table_data %>%
   gt() %>%
   # Thumbnail images from url
   gt_img_rows(thumbnail, height = 50) %>%
@@ -64,8 +67,9 @@ table_data %>%
                  font_size = c("20px", "14px")) %>%
   # Color the rating column
   data_color(columns = bayes_average,
-             colors = c("#FFE2C5", "#C10A0A"),
-             alpha = 0.7) %>%
+             colors = c("#C7D3BA", "#213B35"),
+             alpha = 0.8) %>%
+  fmt_number(columns = bayes_average, decimals = 2) %>%
   # Center the column with thumbnail, as well as numeric columns
   cols_align("center", columns = c("thumbnail", "player_range", "playingtime", "bayes_average")) %>%
   cols_width(c(categories) ~ px(250),
@@ -78,13 +82,17 @@ table_data %>%
              playingtime = "Time (minutes)",
              bayes_average = "Rating") %>%
   # Add title and subtitle
-  tab_header(title = "Great Cooperative Games",
-             subtitle = "The top ten highest rated cooperative board games") %>%
+  tab_header(title = "Great Cooperative Board Games",
+             subtitle = "In these games, you collaborate with the other players to beat the game. So either you all win, or you all loose! These are the top ten highest rated cooperative board games.") %>%
   # Add source
-  tab_source_note(source_note = "Source: BoardGamesGeeks (via [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-25/readme.md)") %>%
+  tab_source_note(source_note = "Source: BoardGamesGeeks") %>%
   # Style options
   opt_all_caps() %>%
-  opt_table_font(font = list(google_font("Chivo"),
-                             default_fonts()))
+  opt_align_table_header("left") %>%
+  opt_table_font(font = list(google_font("Alata"),
+                             default_fonts())) %>%
+  tab_options(heading.title.font.size = px(30))
 
-gtsave()
+
+gtsave(coopgames_table, "output/2022week04_boardgames.pdf")
+gtsave(coopgames_table, "output/2022week04_boardgames.png")
