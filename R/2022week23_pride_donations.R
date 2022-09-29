@@ -1,15 +1,12 @@
 # Pride Donations, TidyTuesday 2022, week 23
 # By Emma Skarstein, August 2022
 
-#remotes::install_github("hrbrmstr/ggchicklet")
 
 library(tidyverse)  # Data cleaning tools and ggplot2
 library(stringr)
 library(showtext)   # Fonts
 library(janitor)    # Cleaning names
-#library(ggimage)
 library(ggtext)     # element_markdown
-library(ggchicklet) # Rounded corners on bar charts
 library(patchwork)
 
 pride_aggregates <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/pride_aggregates.csv')
@@ -49,7 +46,7 @@ companies_contributions <- companies_contributions %>%
   mutate(image_html = paste0("<img src='", image,  "' width='", sizes, "' /><br>")) %>%
   mutate(brand_color = c("#FE0300", "#0CA8E0", "#0FB24A", "#FF9904", "#662C8F", "#EC1E25", "#1272CE", "#D00E23", "#139858", "#7B847C", "#D01E0F", "#1273CE", "#1577C0", "#614F45", "#FBB713"))
 
-ggplot(companies_contributions,
+p <- ggplot(companies_contributions,
        aes(x = reorder(company, amount_contributed_across_states),
            y = amount_contributed_across_states)) +
   geom_col(aes(fill = I(brand_color)), color = col_bar, width = 0.75) +
@@ -82,8 +79,14 @@ ggplot(companies_contributions,
         panel.grid = element_blank(),
         panel.border = element_blank())
 
-ggsave("output/2022week23_pride_donations.pdf", width = 8, height = 9, dpi = 200)
-ggsave("output/2022week23_pride_donations.png", width = 9, height = 11, dpi = 200)
+p
+ggsave("output/2022week23_pride_donations.pdf", width = 8, height = 9)
+
+png("output/2022week23_pride_donations.png", width = 8, height = 9,
+    res = 400, units = "in")
+print(p)
+dev.off()
+
 
 
 
