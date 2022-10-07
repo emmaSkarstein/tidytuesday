@@ -23,6 +23,7 @@ f2 <- "Playfair Display"
 font_add_google(name = f1, family = f1)
 font_add_google(name = f2, family = f2)
 showtext_auto()
+showtext_opts(dpi = 300)
 
 # Colors
 col_bar <- "#191919"
