@@ -55,9 +55,14 @@ dat.gg <- circleLayoutVertices(packing, npoints=50) |>
 f1 <- "Averia Serif Libre"
 f1 <- "Single day"
 f1 <- "Potta One"
+f1 <- "Sacramento"
+f1 <- "Signika Negative" # Bubble text font
+f3 <- "Miniver" # Title font
 f2 <- "Alegreya"
+f2 <- "Nunito" # Body text font
 font_add_google(name = f1, family = f1)
 font_add_google(name = f2, family = f2)
+font_add_google(name = f3, family = f3)
 showtext_auto()
 showtext_opts(dpi = 300)
 
@@ -65,9 +70,6 @@ showtext_opts(dpi = 300)
 pal <- rep(paletteer_d("tvthemes::Day"), 13)[1:n+1]
 pal_dark <- darken(pal, amount = 0.1)
 col_text <- paletteer_d("tvthemes::Day")[1]
-
-# Background image
-img <- jpeg::readJPEG("R/2022week41_yarn/wood.jpg")
 
 # Make the plot
 p <- ggplot() +
@@ -87,7 +89,7 @@ p <- ggplot() +
   scale_pattern_fill_manual(values = pal) +
   # Add text in the center of each bubble + control its size
   geom_text(data = data,
-            aes(x, y, size=n*4, label = word, family = f1, fontface = "bold")) +
+            aes(x, y, size=n*4, label = word, family = f1)) +
   scale_size_continuous(range = c(3, 10)) +
   labs(title = "Thrilling Threads",
        subtitle = "Top 100 joyful words in yarn names from ravelry.com.",
@@ -95,7 +97,7 @@ p <- ggplot() +
   # General theme:
   theme_void() +
   theme(text = element_text(family = f2, size = 18),
-        plot.title = element_text(family = f1,
+        plot.title = element_text(family = f3,
                                   size = 50,
                                   color = col_text),
         plot.subtitle = element_text(size = 18,
