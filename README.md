@@ -4,6 +4,10 @@ These are my contributions to the [Tidy Tuesday project](https://github.com/rfor
 
 ---
 
+**Week 41, 2022** | YARN
+![2022week41](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2022week41_yarn.png)
+
+
 **Week 23, 2022** | PRIDE DONATIONS
 ![2022week23](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2022week23_pride_donations.png)
 
