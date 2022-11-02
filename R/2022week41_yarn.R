@@ -7,6 +7,7 @@
 
 library(tidyverse)
 library(stringr)
+library(textdata)
 library(tidytext)
 library(packcircles)
 library(showtext)
@@ -14,7 +15,7 @@ library(ggpattern)
 library(colorspace)
 library(paletteer)
 
-library(janeaustenr)
+#library(janeaustenr)
 
 yarn <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-10-11/yarn.csv')
 
@@ -34,7 +35,7 @@ get_sentiments("nrc") |> select(sentiment) |> unique()
 
 # Pleasant ply
 
-n = 50
+n = 40
 # Generate the layout. This function return a dataframe with one line per bubble.
 # It gives its center (x and y) and its radius, proportional of the value
 packing <- circleProgressiveLayout(joyful_yarn$n[1:n], sizetype='area')
@@ -52,14 +53,9 @@ dat.gg <- circleLayoutVertices(packing, npoints=50) |>
   mutate(id_factor = as.factor(id))
 
 # Font
-f1 <- "Averia Serif Libre"
-f1 <- "Single day"
-f1 <- "Potta One"
-f1 <- "Sacramento"
-f1 <- "Signika Negative" # Bubble text font
-f3 <- "Miniver" # Title font
-f2 <- "Alegreya"
-f2 <- "Nunito" # Body text font
+f1 <- "Alata" # Bubble text font
+f2 <- "Lato" # Body text font
+f3 <- "Paytone One" # Title font
 font_add_google(name = f1, family = f1)
 font_add_google(name = f2, family = f2)
 font_add_google(name = f3, family = f3)
@@ -89,19 +85,21 @@ p <- ggplot() +
   scale_pattern_fill_manual(values = pal) +
   # Add text in the center of each bubble + control its size
   geom_text(data = data,
-            aes(x, y, size=n*4, label = word, family = f1)) +
+            aes(x, y, size=n*4, label = word), fontface = "bold", family = f1) +
   scale_size_continuous(range = c(3, 10)) +
   labs(title = "Thrilling Threads",
-       subtitle = "Top 100 joyful words in yarn names from ravelry.com.",
+       subtitle = str_wrap(paste0("Here are the top ", n, " words that are associated with joy in yarn names from ravelry.com. The word associations are from the NRC Emotion Lexicon, constructed by Saif Mohammad."),
+                           70),
        caption = "Source: ravelry.com  |  Graphic: Emma Skarstein") +
   # General theme:
   theme_void() +
   theme(text = element_text(family = f2, size = 18),
         plot.title = element_text(family = f3,
-                                  size = 50,
-                                  color = col_text),
-        plot.subtitle = element_text(size = 18,
-                                     color = col_text),
+                                  size = 60, face = "bold",
+                                  color = col_text,
+                                  margin = margin(t = 20)),
+        plot.subtitle = element_text(size = 18, face = "bold",
+                                     color = col_text, vjust = 0.5),
         plot.caption = element_text(size = 12,
                                     color = col_text,
                                     margin = margin(t = 60)),
