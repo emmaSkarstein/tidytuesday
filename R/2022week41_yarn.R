@@ -97,14 +97,14 @@ p <- ggplot() +
         plot.title = element_text(family = f3,
                                   size = 60, face = "bold",
                                   color = col_text,
-                                  margin = margin(t = 20)),
+                                  margin = margin(t = 20, b = 20)),
         plot.subtitle = element_text(size = 18, face = "bold",
                                      color = col_text, vjust = 0.5),
         plot.caption = element_text(size = 12,
                                     color = col_text,
-                                    margin = margin(t = 60)),
+                                    margin = margin(t = 30)),
         legend.position="none",
-        plot.margin = margin(40, 20, 20, 20)) +
+        plot.margin = margin(40, 20, 20, 40)) +
   coord_equal()
 
 ggimage::ggbackground(p, background = "R/2022week41_yarn/wood.jpg")
