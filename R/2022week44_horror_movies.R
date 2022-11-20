@@ -94,7 +94,7 @@ ggplot() +
         axis.text = element_text(color = col_text),
         axis.text.x = element_blank(),
         axis.title.x = element_blank(),
-        axis.title.y = element_text(angle = 0, hjust = 1),
+        axis.title.y = element_text(angle = 0, hjust = 1, family = f1),
         plot.background = element_rect(fill = "black"),
         panel.grid = element_blank(),
         panel.grid.major.x = element_line(color = "grey20"),
