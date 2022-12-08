@@ -3,6 +3,9 @@
 These are my contributions to the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday). Graphs are made using [`ggplot2`](https://ggplot2.tidyverse.org/), tables are made with [`gt`](https://gt.rstudio.com/). The contributions are displayed in order of creation, with the newest first.
 
 ---
+**Week 44, 2022** | HORROR MOVIES
+![2022week44](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2022week44_horror_movies.png)
+
 
 **Week 41, 2022** | YARN
 ![2022week41](https://github.com/emmaSkarstein/tidytuesday/blob/master/output/2022week41_yarn.png)
