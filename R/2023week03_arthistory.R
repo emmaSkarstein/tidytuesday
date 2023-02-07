@@ -11,6 +11,7 @@ showtext_opts(dpi = 300)
 
 artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv')
 
+page_height <- 1.3
 
 space_by_race_gender_2020 <- artists %>%
   filter(year == 2020, artist_gender != "N/A") %>%
@@ -18,8 +19,9 @@ space_by_race_gender_2020 <- artists %>%
   summarise(mean_space = mean(space_ratio_per_page_total),
             n = n()) %>%
   ungroup() %>%
-  mutate(side_lengths = sqrt(mean_space),
-         artist_plural = ifelse(n > 1, "artists", "artist"))
+  mutate(artist_plural = ifelse(n > 1, "artists", "artist"),
+         area_on_page = mean_space*page_height,
+         side_lengths = sqrt(area_on_page))
 
 f1 <- "Cabin" # Title font
 f2 <- "Cabin" # Body text font
@@ -39,7 +41,7 @@ ggplot(space_by_race_gender_2020, aes(x = 0, y = 0)) +
             fill = col_text) +
   geom_text(aes(label = paste0("(", n, " ", artist_plural, ")"),
                 x = (side_lengths + page_margin)/2,
-                y = side_lengths + 1.5*page_margin),
+                y = side_lengths + 1.5*page_margin + 0.01),
             family = f2, color = col_text) +
   geom_text(aes(label = paste0(round(mean_space*100), "% of page"),
                 x = (side_lengths + page_margin)/2,
@@ -48,15 +50,15 @@ ggplot(space_by_race_gender_2020, aes(x = 0, y = 0)) +
   facet_grid(rows = vars(artist_race_nwi), cols = vars(artist_gender)) +
   scale_x_continuous(expand = c(0,0)) +
   scale_y_continuous(expand = c(0,0)) +
-  coord_cartesian(ylim = c(0, 1), xlim = c(0, 1)) +
-  labs(title = "White space: Whose art takes up space in art history books?",
-       subtitle = "The squares show the average area occupied by pieces of art in <br>Gardner’s *Art Through the Ages* (16th edition, published in 2020), <br>according to the artist's gender and whether or not they are white. Note also the number of artists in each of the groups.",
+  coord_fixed(ylim = c(0, page_height), xlim = c(0, 1)) +
+  labs(title = "White space: Whose art takes up space \nin art history books?",
+       subtitle = "The squares show the average area occupied by pieces of art in <br>Gardner’s *Art Through the Ages* (16th edition, published in 2020), <br>according to the artist's gender and whether or not they are white. <br>Note also the number of artists in each of the groups.",
        caption = "Source: Holland Stam, 'Quantifying art historical narratives' | Graphics: Emma Skarstein"
        ) +
   theme(text = element_text(family = f2, color = col_text),
         plot.title = element_text(family = f1, face = "bold",
-                                  size = 18, margin = margin(t = 10, b = 20)),
-        plot.subtitle = element_markdown(size = 12,
+                                  size = 18, margin = margin(t = 10, b = 16)),
+        plot.subtitle = element_markdown(size = 10.5,
                                      margin = margin(b = 10)),
         plot.caption = element_text(size = 8,
                                     margin = margin(t = 10)),
@@ -72,5 +74,5 @@ ggplot(space_by_race_gender_2020, aes(x = 0, y = 0)) +
 
 
 ggsave("output/2023week03_arthistory.pdf", height = 8, width = 5.5)
-ggsave("output/2023week03_arthistory.png")
+ggsave("output/2023week03_arthistory.png", height = 8, width = 5.5)
 
